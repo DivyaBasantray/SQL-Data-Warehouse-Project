@@ -37,28 +37,29 @@ Building the Data Warehouse (Data Engineering)
 Develop a modern data warehouse using SQL Server to consolidate sales data, enabling analytical reporting and informed decision-making.
 
 **Specifications**
-**Data Sources**: Import data from two source systems (ERP and CRM) provided as CSV files.
 
-**Data Quality**: Cleanse and resolve data quality issues prior to analysis.
+-**Data Sources**: Import data from two source systems (ERP and CRM) provided as CSV files.
 
-**Integration**: Combine both sources into a single, user-friendly data model designed for analytical queries.
+-**Data Quality**: Cleanse and resolve data quality issues prior to analysis.
 
-**Scope**: Focus on the latest dataset only; historization of data is not required.
+-**Integration**: Combine both sources into a single, user-friendly data model designed for analytical queries.
 
-**Documentation**: Provide clear documentation of the data model to support both business stakeholders and analytics teams.
+-**Scope**: Focus on the latest dataset only; historization of data is not required.
+
+-**Documentation**: Provide clear documentation of the data model to support both business stakeholders and analytics teams.
 
 ---
 
-**BI: Analytics & Reporting (Data Analysis)**:
+**BI: Analytics & Reporting (Data Analysis)**
 
 **Objective**
 
-Develop SQL-based analytics to deliver detailed insights into:
+- **Develop SQL-based analytics to deliver detailed insights into**:
 
-**Customer Behavior**
+- **Customer Behavior**
 
-Product Performance
+- **Product Performance**
 
-**Sales Trends**
+- **Sales Trends**
 
 These insights empower stakeholders with key business metrics, enabling strategic decision-making.
