@@ -1,4 +1,4 @@
-# Data Warehouse Analytics Project
+# Data Warehouse Analytics Project (Using SQL)
 
 This project demonstrates a comprehensive data warehousing and analytics solution, from building a data warehouse to generating actionable insights. Designed as a portfolio project, it highlights industry best practices in data engineering and analytics.
 
