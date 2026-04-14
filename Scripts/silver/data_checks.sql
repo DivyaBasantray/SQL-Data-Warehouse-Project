@@ -140,3 +140,6 @@ SELECT
 	END AS sls_price
 	
 FROM bronze.crm_sales_details;
+
+SELECT *
+FROM silver.crm_sales_details;
