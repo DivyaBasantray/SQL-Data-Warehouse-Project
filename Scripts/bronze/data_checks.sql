@@ -152,13 +152,13 @@ SELECT
 	CASE WHEN sls_sales IS NULL OR sls_sales <= 0 OR sls_sales != sls_quantity * ABS(sls_price)  --ABS() : RETURNS ABSOLUTE VALUE OF A NUMBER
 		 THEN sls_quantity * ABS(sls_price)
 		 ELSE sls_sales
-	END AS sls_sales,
+	END AS sls_sales, 		-- RECALCULATE SALES IF ORIGINAL VALUE IS MISSING OR INCORRECT
 
 	sls_quantity,
 
 	CASE WHEN sls_price IS NULL OR sls_price <= 0
 		 THEN sls_sales / NULLIF(sls_quantity, 0)
-		 ELSE sls_price
+		 ELSE sls_price			-- DERIVE PRICE IF ORIGINAL VALUE IS INVALID
 	END AS sls_price
 	
 FROM bronze.crm_sales_details;
