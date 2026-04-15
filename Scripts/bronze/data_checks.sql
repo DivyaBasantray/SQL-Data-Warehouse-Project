@@ -215,9 +215,24 @@ SELECT
 	END AS cntry		-- NORMALIZE AND HANDLE MISSING OR BLANK COUNTRY CODES
 FROM bronze.erp_loc_a101;
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 
+-- CHECK FOR UNWANTED SPACES
 
+SELECT *
+FROM bronze.erp_px_cat_g1v2
+WHERE cat != TRIM(cat) OR subcat != TRIM(subcat) OR maintenance != TRIM(maintenance);
 
+-- DATA STANDARDIZATION AND CONSISTENCY
+
+SELECT DISTINCT cat
+FROM bronze.erp_px_cat_g1v2;
+
+SELECT DISTINCT subcat
+FROM bronze.erp_px_cat_g1v2;
+
+SELECT DISTINCT maintenance
+FROM bronze.erp_px_cat_g1v2;
 
 
 
