@@ -212,7 +212,7 @@ SELECT
 		 WHEN TRIM(cntry) IN ('US', 'USA')  THEN 'United States'
 		 WHEN TRIM(cntry) = '' OR cntry IS NULL THEN 'NA'
 		 ELSE TRIM(cntry)
-	END AS cntry
+	END AS cntry		-- NORMALIZE AND HANDLE MISSING OR BLANK COUNTRY CODES
 FROM bronze.erp_loc_a101;
 
 
