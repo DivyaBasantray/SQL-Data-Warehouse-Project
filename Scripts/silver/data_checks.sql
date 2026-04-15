@@ -165,6 +165,7 @@ SELECT
 
 	CASE WHEN bdate > GETDATE() THEN NULL
 		 ELSE bdate
+	
 	END AS bdate,		-- SET FUTURE BIRTHDATES TO NULL
 	
 	CASE WHEN UPPER(TRIM(gen)) IN ('F', 'FEMALE') THEN 'Female'
@@ -175,3 +176,37 @@ SELECT
 FROM bronze.erp_cust_az12;
 
 SELECT * FROM [silver].[crm_cust_info];
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- DATA STANDARDIZATION AND CONSISTENCY
+
+SELECT DISTINCT	cntry					 	
+FROM silver.erp_loc_a101
+ORDER BY cntry;
+
+SELECT * 
+FROM silver.erp_loc_a101;
+
+INSERT INTO silver.erp_loc_a101
+(cid, cntry)
+SELECT 
+	REPLACE (cid,'-', '') cid,
+	CASE WHEN TRIM(cntry) = 'DE' THEN 'Germany'
+		 WHEN TRIM(cntry) IN ('US', 'USA')  THEN 'United States'
+		 WHEN TRIM(cntry) = '' OR cntry IS NULL THEN 'NA'
+		 ELSE TRIM(cntry)
+	END AS cntry		-- NORMALIZE AND HANDLE MISSING OR BLANK COUNTRY CODES
+FROM bronze.erp_loc_a101;
+
+
+
+
+
+
+
+
+
+
+
+
