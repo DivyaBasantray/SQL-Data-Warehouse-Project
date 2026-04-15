@@ -199,7 +199,19 @@ SELECT
 	END AS cntry		-- NORMALIZE AND HANDLE MISSING OR BLANK COUNTRY CODES
 FROM bronze.erp_loc_a101;
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
+INSERT INTO silver.erp_px_cat_g1v2
+(id, cat, subcat, maintenance)
+SELECT 
+	id, 
+	cat, 
+	subcat,
+	maintenance
+FROM bronze.erp_px_cat_g1v2;
+
+SELECT *
+FROM silver.erp_px_cat_g1v2;
 
 
 
