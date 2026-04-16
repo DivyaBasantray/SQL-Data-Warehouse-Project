@@ -231,7 +231,7 @@ BEGIN
 		SET @batch_end_time = GETDATE();
 		PRINT'====================================================';
 		PRINT'LOADING SILVER LAYER IS COMPLETED';
-		PRINT '		-TOTAL LOAD DURATION: ' + CATS(DATEDIFF(SECOND, @batch_start_time, @batch_end_time) AS NVARCHAR) +'SECONDS'
+		PRINT '		-TOTAL LOAD DURATION: ' + CAST(DATEDIFF(SECOND, @batch_start_time, @batch_end_time) AS NVARCHAR) +'SECONDS'
 		PRINT'===================================================='
 		
 
