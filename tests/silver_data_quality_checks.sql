@@ -1,3 +1,53 @@
+/*
+===============================================================================
+Quality Checks
+===============================================================================
+Script Purpose:
+    This script performs various quality checks for data consistency, accuracy, 
+    and standardization across the 'silver' layer. It includes checks for:
+    - Null or duplicate primary keys.
+    - Unwanted spaces in string fields.
+    - Data standardization and consistency.
+    - Invalid date ranges and orders.
+    - Data consistency between related fields.
+
+Usage Notes:
+    - Run these checks after data loading Silver Layer.
+    - Investigate and resolve any discrepancies found during the checks.
+===============================================================================
+*/
+
+-- ====================================================================
+-- Checking 'silver.crm_cust_info'
+-- ====================================================================
+
+-- CHECK FOR NULLS OR DUPLICATES IN PRIMARY KEY
+-- EXPECTATION : NO RESULT
+SELECT 
+    cst_id,
+    COUNT(*) 
+FROM silver.crm_cust_info
+GROUP BY cst_id
+HAVING COUNT(*) > 1 OR cst_id IS NULL;
+
+-- CHECK FOR UNWANTED SPACES
+-- EXPECTATION : NO RESULT
+SELECT 
+    cst_key 
+FROM silver.crm_cust_info
+WHERE cst_key != TRIM(cst_key);
+
+-- DATA STANDARDIZATION AND CONSISTENCY
+
+SELECT DISTINCT 
+    cst_marital_status 
+FROM silver.crm_cust_info;
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+-- ====================================================================
+-- Checking 'silver.crm_prd_info'
+-- ====================================================================
+
 -- CHECK FOR NULLS OR DUPLICATES IN PRIMARY KEY
 -- EXPECTATION : NO RESULT
 
@@ -83,6 +133,10 @@ FROM bronze.crm_prd_info;
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+-- ====================================================================
+-- Checking 'silver.crm_sales_details'
+-- ====================================================================
+
 IF OBJECT_ID('silver.crm_prd_info', 'U') IS NOT NULL
 	DROP TABLE silver.crm_sales_details;
 CREATE TABLE silver.crm_sales_details (
@@ -146,6 +200,10 @@ FROM silver.crm_sales_details;
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
+-- ====================================================================
+-- Checking 'silver.erp_cust_az12'
+-- ====================================================================
+
 -- IDENTIFY OUT-OF-RANGE DATES
 
 SELECT DISTINCT bdate
@@ -179,6 +237,10 @@ SELECT * FROM [silver].[crm_cust_info];
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
+-- ====================================================================
+-- Checking 'silver.erp_loc_a101'
+-- ====================================================================
+
 -- DATA STANDARDIZATION AND CONSISTENCY
 
 SELECT DISTINCT	cntry					 	
@@ -200,6 +262,25 @@ SELECT
 FROM bronze.erp_loc_a101;
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- ====================================================================
+-- Checking 'silver.erp_px_cat_g1v2'
+-- ====================================================================
+
+-- CHECK FOR UNWANTED SPACES
+-- EXPECTATION : NO RESULT
+
+SELECT 
+    * 
+FROM silver.erp_px_cat_g1v2
+WHERE cat != TRIM(cat) 
+   OR subcat != TRIM(subcat) 
+   OR maintenance != TRIM(maintenance);
+
+-- DATA STANDARDIZATION AND CONSISTENCY
+
+SELECT DISTINCT maintenance 
+FROM silver.erp_px_cat_g1v2;
 
 INSERT INTO silver.erp_px_cat_g1v2
 (id, cat, subcat, maintenance)
