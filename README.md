@@ -4,7 +4,7 @@ This project demonstrates a comprehensive data warehousing and analytics solutio
 
 ---
 
-## 📖 Project Overview
+## Project Overview
 
 This project involves:
 
@@ -16,7 +16,7 @@ This project involves:
 
 - **Analytics & Reporting**: Creating SQL-based reports and dashboards for actionable insights.
 
-🎯 This repository is an excellent resource for professionals and students looking to showcase expertise in:
+This repository is an excellent resource for professionals and students looking to showcase expertise in:
 
 - SQL Development
   
@@ -32,7 +32,7 @@ This project involves:
 
 ---
 
-## 🚀 Project Requirements
+## Project Requirements
 Building the Data Warehouse (Data Engineering)
 
 **Objective :-**
@@ -53,7 +53,7 @@ Develop a modern data warehouse using SQL Server to consolidate sales data, enab
 
 ---
 
-### 🏗️ BI: Analytics & Reporting (Data Analysis)
+### BI: Analytics & Reporting (Data Analysis)
 
 **Objective:-**
 
